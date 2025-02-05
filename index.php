@@ -1,6 +1,7 @@
 <?php
 
 $todos = [];
+
 if (file_exists('todos.json')) {
     $todos = json_decode(file_get_contents('todos.json'), true);
 }
@@ -44,13 +45,14 @@ if (file_exists('todos.json')) {
             <?php if ($todos): ?>
                 <?php foreach ($todos as $todoName => $todo): ?>
                     <div class="todo-item d-flex gap-3 border border-secondary p-2 px-2 rounded-1">
-                        <div>
+                        <form action="changeStatus.php" method="POST">
+                            <input type="hidden" name="todo_name" value="<?php echo $todoName ?>">
                             <input type="checkbox" class="btn-check"
                                    id="<?php echo $todoName ?>" <?php echo $todo['completed'] ? 'checked' : '' ?>
                                    autocomplete="off">
                             <label class="btn btn-outline-primary" style="font-size: 10px; width: 80px;"
                                    for="<?php echo $todoName ?>"><?php echo $todo['completed'] ? 'Completed' : 'Complete' ?></label><br>
-                        </div>
+                        </form>
                         <?php echo $todoName ?>
                         <form class="ms-auto" action="deleteTodo.php" method="POST">
                             <input type="hidden" name="todoName" value="<?php echo $todoName ?>">
@@ -68,6 +70,16 @@ if (file_exists('todos.json')) {
 </div>
 </body>
 </html>
+
+<script>
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener('input', () => {
+            checkbox.parentNode.submit();
+        })
+    })
+
+</script>
 
 <style>
     .red-x-mark {
