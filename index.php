@@ -1,9 +1,10 @@
 <?php
+
+$todos = [];
 if (file_exists('todos.json')) {
     $todos = json_decode(file_get_contents('todos.json'), true);
-} else {
-    $todos = [];
 }
+
 ?>
 
 <!doctype html>
@@ -47,11 +48,12 @@ if (file_exists('todos.json')) {
                             <input type="checkbox" class="btn-check"
                                    id="<?php echo $todoName ?>" <?php echo $todo['completed'] ? 'checked' : '' ?>
                                    autocomplete="off">
-                            <label class="btn btn-outline-primary" style="font-size: 10px"
+                            <label class="btn btn-outline-primary" style="font-size: 10px; width: 80px;"
                                    for="<?php echo $todoName ?>"><?php echo $todo['completed'] ? 'Completed' : 'Complete' ?></label><br>
                         </div>
                         <?php echo $todoName ?>
-                        <form class="ms-auto" action="">
+                        <form class="ms-auto" action="deleteTodo.php" method="POST">
+                            <input type="hidden" name="todoName" value="<?php echo $todoName ?>">
                             <button type="submit" class="red-x-mark">
                                 &#x274C;
                             </button>
@@ -59,7 +61,7 @@ if (file_exists('todos.json')) {
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <h3 class="text-center">There is no todos yet!</h3>
+                <h3 class="text-center">There is no todos yet! Add some of them.</h3>
             <? endif; ?>
         </div>
     </div>
