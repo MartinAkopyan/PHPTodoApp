@@ -11,16 +11,6 @@ Tasks are stored in the `todos.json` file.
 - 🗑 **Delete tasks** – Tasks can be removed from the list.  
 - 💾 **Persistent storage** – Task states are saved in `todos.json`.  
 
-## 📂 Project Structure  
-
-- **`index.php`** – The main page displaying the task list and the form for adding new tasks.  
-- **`newTodo.php`** – Handles the addition of new tasks.  
-- **`changeStatus.php`** – Manages task status changes (completed/not completed).  
-- **`deleteTodo.php`** – Handles task deletion.  
-- **`todos.json`** – JSON file that stores tasks.  
-- **`Dockerfile`** – Configuration for building a Docker image of the application.  
-- **`docker-compose.yml`** – Configuration for running the application in a Docker container.  
-
 ## 🛠 How to Run  
 
 1. Ensure that **Docker** and **Docker Compose** are installed.  
