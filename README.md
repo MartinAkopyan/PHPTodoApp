@@ -16,7 +16,7 @@ Tasks are stored in the `todos.json` file.
 1. Ensure that **Docker** and **Docker Compose** are installed.  
 2. Clone the repository:  
    ```bash
-   git clone https://github.com/your-repo/martinakopyan-phptodoapp.git
+   git clone git@github.com:MartinAkopyan/PHPTodoApp.git
 3. Navigate to the project directory
    ```bash
    cd martinakopyan-phptodoapp
